@@ -25,11 +25,14 @@ public class Robot extends LoggedRobot {
   public void robotInit() {
     Logger.recordMetadata("ProjectName", "MyProject"); // Set a metadata value
 
-if (isReal()) {
+if (isReal()) {//Is this the real life, is this just fantasy
+
     Logger.addDataReceiver(new WPILOGWriter()); // Log to a USB stick ("/U/logs")
     Logger.addDataReceiver(new NT4Publisher()); // Publish data to NetworkTables
     new PowerDistribution(1, ModuleType.kRev); // Enables power distribution logging
-} else {
+    
+} else {//caught in a landslide, no escape from reality
+
     setUseTiming(false); // Run as fast as possible
     String logPath = LogFileUtil.findReplayLog(); // Pull the replay log from AdvantageScope (or prompt the user)
     Logger.setReplaySource(new WPILOGReader(logPath)); // Read replay log
